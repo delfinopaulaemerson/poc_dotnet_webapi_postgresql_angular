@@ -1,0 +1,42 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logotipo -->
+    <a href="#" class="navbar-logo">Alunos</a>
+
+    <!-- Botão Hambúrguer (Mobile) -->
+    <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Abrir menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Links de Navegação -->
+    <ul class="nav-menu" [class.active]="isMenuOpen">
+      <li class="nav-item">
+        <a href="#" class="nav-links">Sair</a>
+      </li>
+      
+      <!-- Dropdown Item -->
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-links" (click)="toggleDropdown($event)">
+          Serviços <span class="arrow" [class.open]="isDropdownOpen">&#9662;</span>
+        </a>
+        
+        @if (isDropdownOpen) {
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/aluno']" class="dropdown-item">Cadastrar Aluno</a></li>
+            <!-- <li><a href="#" class="dropdown-item">Design UI/UX</a></li> -->
+            <!-- <li><a href="#" class="dropdown-item">Consultoria SEO</a></li> --> 
+          </ul>
+        }
+      </li>
+
+      <li class="nav-item">
+        <a [routerLink]="['/producer']" class="nav-links">Kfka Producer</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-links">Contato</a>
+      </li>
+    </ul>
+  </div>
+</nav>

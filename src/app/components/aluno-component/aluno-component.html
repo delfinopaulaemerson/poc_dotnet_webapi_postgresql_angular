@@ -1,0 +1,86 @@
+<div class="aluno-container" id="aluno-container">
+  <div id="manter-alunos">
+    <h2>Manter Alunos</h2>
+  </div>
+  @if (erroMessage) {
+    <div class="alert alert-danger">
+      {{ erroMessage }}
+    </div>
+  }
+
+  <form [formGroup]="alunoForm" (ngSubmit)="onSubmit()">
+    @if(alunoForm.get('id')?.value){
+        <div class="form-group">
+            <label for="id">Id</label>
+            <input 
+                id="id" 
+                type="id" 
+                formControlName="id"
+                placeholder="Seu id"
+            />
+        </div>
+    }
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input 
+        id="nome" 
+        type="nome" 
+        formControlName="nome" 
+        placeholder="Seu nome"
+      />
+      
+      @if (alunoForm.get('nome')?.touched && alunoForm.get('nome')?.invalid) {
+        <span class="error-msg">Por favor, insira um nome válido.</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="media">Média</label>
+      <input 
+        id="media" 
+        type="media" 
+        formControlName="media" 
+        placeholder="Sua media"
+      />
+
+      @if (alunoForm.get('media')?.touched && alunoForm.get('media')?.invalid) {
+        <span class="error-msg">A média deve estar entre 0 e 10.</span>
+      }
+    </div>
+    <div class="form-group">
+      <label for="faltas">Faltas</label>
+      <input 
+        id="faltas" 
+        type="faltas" 
+        formControlName="faltas" 
+        placeholder="Suas faltas"
+      />
+
+      @if (alunoForm.get('faltas')?.touched && alunoForm.get('faltas')?.invalid) {
+        <span class="error-msg">As faltas devem estar entre 0 e 100.</span>
+      }
+    </div>
+    <div class="form-group">
+      <label for="situacao">Situação</label>
+      <input 
+        id="situacao" 
+        type="situacao" 
+        formControlName="situacao" 
+        placeholder="Sua situação"
+      />
+
+      @if (alunoForm.get('situacao')?.touched && alunoForm.get('situacao')?.invalid) {
+        <span class="error-msg">A situação deve ter pelo menos 50 caracteres.</span>
+      }
+    </div>
+    <div>
+        <button type="submit" [disabled]="isLoading">
+        @if (isLoading) {
+            <span>Carregando...</span>
+        } @else {
+            <span>Manter Aluno</span>
+        }
+        </button>
+    </div>
+  </form>
+</div>

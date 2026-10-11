@@ -1,0 +1,66 @@
+<div class="table-container">
+  <div id="table-alunos">  
+    <h2>Lista de Alunos</h2>
+  </div>
+  <!-- Adicionada a classe custom-table para aplicar os estilos -->
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Faltas</th>
+        <th>Media</th>
+        <th>Situação</th>
+        <th>Editar</th>
+        <th>Icon</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- O *ngFor deve ser aplicado na linha (tr) que será repetida -->
+      <tr *ngFor="let item of paginatedItems()"; track item>
+        <td>{{ item.id }}</td>
+        <td>{{ item.nome }}</td>
+        <td><strong>{{ item.faltas }}</strong></td>
+        <td>{{ item.media }}</td>
+        <td>{{ item.situacao }}</td>
+        <td>
+          <button (click)="editAluno(item)">
+            <img id="editar-aluno" [src]=" `assets/images/editar.png` " [title]=" 'Editar' " alt="Editar"/>
+          </button>
+        </td>
+         <td>
+          <button (click)="excluirAluno(item)">
+            <img id="excluir-aluno" [src]=" `assets/images/excluir.png` " [title]=" 'Excluir' " alt="Excluir"/>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    <div id="pagination" class="pagination">
+        <div class="pagination-controls">
+          <button 
+            (click)="prevPage()" 
+            [disabled]="currentPage() === 1">
+            Anterior
+          </button>
+
+          @for (page of pageNumbers(); track page) {
+            <button 
+              (click)="goToPage(page)" 
+              [class.active]="currentPage() === page">
+              {{ page }}
+            </button>
+          }
+
+          <button 
+            (click)="nextPage()" 
+            [disabled]="currentPage() === totalPages()">
+            Próximo
+          </button>
+        </div>
+
+        <p class="info-text">
+          Página <strong>{{ currentPage() }}</strong> de {{ totalPages() }}
+        </p>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+/* 1. CENTRALIZAÇÃO GLOBAL DA TELA */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center;     /* Centraliza horizontalmente */
+  min-height: 100vh;       /* Ocupa toda a altura da tela */
+  width: 100%;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); /* Fundo neutro e moderno */
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/* 2. CARD DO FORMULÁRIO (Encapsula o Título, Alerta e Form) */
+.login-container > div:first-child, /* Caixa do título */
+.alert,
+form {
+  width: 100%;
+  max-width: 400px; /* Limita a largura máxima do bloco de login */
+}
+
+/* Estilização específica do bloco do formulário */
+form {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaçamento uniforme entre os campos */
+  box-sizing: border-box;
+}
+
+/* 3. TÍTULO */
+.login-container h2 {
+  margin: 0 0 15px 0;
+  color: #1f2937;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* 4. ALERTA DE ERRO */
+.alert-danger {
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* 5. CAMPOS DE ENTRADA (FORM GROUPS) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #1f2937;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.form-group input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Mensagens de erro de validação */
+.error-msg {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* 6. BOTÃO DE LOGIN e CONTAINER DO BOTÃO */
+form > div:last-child {
+  margin-top: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
